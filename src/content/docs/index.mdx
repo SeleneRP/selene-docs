@@ -1,0 +1,36 @@
+---
+title: Welcome to Selene
+description: Extensible isometric roleplaying platform.
+template: splash
+hero:
+  tagline: Extensible isometric roleplaying platform.
+  image:
+    file: ../../assets/selene.png
+  actions:
+    - text: Getting Started
+      link: /guides/getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: Download Server Software
+      link: /downloads
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Next steps
+
+<CardGrid stagger>
+	<Card title="Download Server" icon="laptop">
+		You can run a server locally for development. See [Downloads](/downloads).
+	</Card>
+	<Card title="Create your first bundle" icon="add-document">
+		Follow the [Getting Started](/guides/getting-started/) guide to create custom content.
+	</Card>
+	<Card title="Configure your server" icon="setting">
+		Edit your `server.lua` to your needs. See [Server Configuration](/reference/configuration/server/).
+	</Card>
+	<Card title="Read the docs" icon="open-book">
+		Learn what's available in the [Scripting Reference](/reference/scripting/).
+	</Card>
+</CardGrid>
