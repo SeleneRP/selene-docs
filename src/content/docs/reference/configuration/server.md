@@ -4,7 +4,7 @@ sidebar:
     label: Server Configuration
 ---
 
-Server configuration is done through the `server.lua` file. This is a regular lua script, which means you will have access to all of the lua language features and all global functions as described in the [scripting reference](../scripting).
+Server configuration is done through the `server.lua` file. This is a regular lua script, which means you will have access to all of the lua language features and all global functions as described in the [scripting reference](../../scripting).
 
 Configuration options are defined as global variables from this script.
 
