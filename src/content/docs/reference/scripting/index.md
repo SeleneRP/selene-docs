@@ -8,7 +8,7 @@ Scripts are contained within **resource bundles** that are loaded from the `bund
 These bundles can also contain any additional assets, such as models, textures, and user interfaces. 
 
 Bundles to be loaded are configured in the `server.lua` file, which is a lua script itself and acts as an entrypoint for everything else.
-Read the [server configuration reference](../reference/configuration/server) for more information on how to setup your server.
+Read the [server configuration reference](../../configuration/server) for more information on how to setup your server.
 
 ## Script Bindings
 
