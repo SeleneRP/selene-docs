@@ -6,14 +6,14 @@ description: load_bundle is a globally available function that loads a resource 
 `load_bundle` is a globally available function that loads a resource bundle from the `bundles` folder.
 
 ```lua
-load_bundle(name: String)
+load_bundle(bundle_name: String)
 ```
 
 -----
 
 ## Reference
 
-`load_bundle(name)`
+`load_bundle(bundle_name)`
 
 Call `load_bundle` in your server.lua script to load a resource bundle by name from the `bundles` folder. 
 
@@ -26,7 +26,7 @@ load_bundle("my_test_bundle")
 
 ### Parameters
 
-- `name`: The name of the bundle to load from within the `bundles` folder.
+- `bundle_name`: The name of the bundle to load from within the `bundles` folder.
 
 ### Returns
 
