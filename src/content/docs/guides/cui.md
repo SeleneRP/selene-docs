@@ -1,5 +1,5 @@
 ---
-title: Chromium UI
+title: Custom UI
 ---
 
 Selene uses Chromium Embedded Framework (CEF) to render UI provided by addons. This allows for UI to be implemented using typical web technologies such as HTML, CSS, and JavaScript, as well as related frameworks.
