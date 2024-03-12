@@ -12,7 +12,7 @@ export default defineConfig({
             },
             favicon: '/favicon.png',
             social: {
-                github: 'https://github.com/SeleneRP/selene',
+                github: 'https://github.com/SeleneRP/selene-docs',
                 discord: 'https://discord.gg/S7maQVRRa9',
                 twitter: 'https://twitter.com/BlayTheNinth',
                 twitch: 'https://twitch.tv/BlayTheNinth',
