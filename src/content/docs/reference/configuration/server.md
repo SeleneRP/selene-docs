@@ -10,6 +10,12 @@ Configuration options are defined as global variables from this script.
 
 ```lua
 // server.lua
+-- The name of your server. This will be displayed in the server browser and to clients.
+name = "Untitled Server"
+
+-- Set to true if you want your server to be publicly listed in the server browser.
+public = true
+
 -- The port to host the server on.
 -- If you are behind a router, this port needs to be forwarded (TCP and UDP).
 port = 8147
