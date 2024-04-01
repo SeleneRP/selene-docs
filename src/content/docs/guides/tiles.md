@@ -14,11 +14,11 @@ Selene or Godot do not have the ability to pack these texture atlases directly, 
 TexturePacker's `Grid / Strip` algorithm is available in the paid version only. Note that other packing algorithms are not supported, as Godot expects a uniform grid for tilesets.
 :::
 
-:::info
+:::note
 In the future, we will also support gdx-texturepacker's `.atlas` format as a free alternative.
 :::
 
-## Creating a tileset
+## Creating a Tileset
 
 Once you've packed your tile images into a texture atlas, create a new `TileSetDefinition` resource in your bundle project. This resource takes the following properties:
 
