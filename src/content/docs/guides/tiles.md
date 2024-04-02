@@ -34,10 +34,17 @@ Changes to tile properties (e.g. their texture origin) will be retained even whe
 
 ## Offsets
 
-By default, a TileSetDefinition will generate origins in a way where images are centered around the center of the tile. For taller tiles, the actual center of the mass is usually lower than that, so things like walls and furniture will not be aligned properly with the ground. To fix this, you can manually change the `Texture Origin` in the generated tile's `Rendering` section. For cases where you already know the desired offsets of the unpacked images, you can provide a `<atlas>.offsets.json` file to act as a hint for Selene. It will then automatically translate those offsets to match the packed texture atlas and use those values for the generated tiles instead.
+By default, a TileSetDefinition will generate origins in a way where images are centered around the center of the tile. For taller tiles, the actual center of the mass is usually lower than that, so things like walls and furniture will not be aligned properly with the ground. To fix this, you can manually change the `Texture Origin` in the generated tile's `Rendering` section. For cases where you already know the desired offsets of the unpacked images, you can provide an `Offset Definitions` file to act as a hint for Selene. It will then automatically translate those offsets to match the packed texture atlas and use those values for the generated tiles instead.
+
+```json
+{
+    "sword.png": { "x": 1, "y": -11 },
+    "axe.png": { "x": -1, "y": -8 }
+}
+```
 
 ## Animated Tiles
 
 Godot supports animated tiles as long as all frames are part of the same texture atlas and located next to each other (either horizontally, vertically, or wrapped into multiple rows). 
 
-By default, a TileSetDefinition will generate a tile for each image in the texture atlas. To instead have it generate an animated tile, make sure your image files are named in some consistent pattern (e.g. `water-0.png` to `water-8.png`) and supply a matching pattern to the `Animated Tiles` property (e.g. `water-*`). After the tileset was generated, you can manually tweak the animation settings in the generated `TileSet` resource (although `Columns` and `Separation` are always recomputed on generation).
+By default, a TileSetDefinition will generate a tile for each image in the texture atlas. To instead have it generate an animated tile, make sure your image files are named in some consistent pattern (e.g. `water-0.png` to `water-8.png`) and supply a matching pattern to the `Animated Tile Patterns` property (e.g. `water-*`). After the tileset was generated, you can manually tweak the animation settings in the generated `TileSet` resource (although `Columns` and `Separation` are always recomputed on generation).
