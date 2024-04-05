@@ -65,3 +65,21 @@ In order for sprites to be treated as one animation, you must supply a `Animatio
     }
 }
 ```
+
+## Tile Transitions
+
+Tile transitions are used to blend tiles of different ground types, i.e. allowing for a natural shore between water and sand, or more natural edges between grass and roads. Selene can render overlays based on the surrounding tiles for these cases.
+
+To generate transitions for your tiles, you will need a set of transition masks, which are images that define the shape of each transition. Transition masks should be named in a particular way, and there will probably be tooling to help you name them in the future, as well as a default set of transition masks you can use.
+
+Once you have your original `TileSetDefinition` for your ground tiles set up and got some transition masks ready, create a new `TileMaskDefinition`. This resource takes the following properties:
+
+- `Tileset Definition`: The tileset you want to generate transitions for.
+- `Mask Textures`: A list of mask images to use for generating transition images.
+- `Output Path`: The path to save the generated transition images to.
+
+Once you've filled in the tileset and mask textures, press `Generate Textures`. Selene will generate a set of transition images based on the masks and all tiles within the given tileset, and save them to the configured output path. From there, simply pack them into a texture atlas and create a new `TileSetDefinition` for the transitions themselves, just like you would for other tiles.
+
+Note that transition tiles must be prefixed `t_`. This is so Selene can determine what kind of transitions are available and use them accordingly. If you generated your transition images using the above method, this should already be the case.
+
+Transitions will always try the best match and fall back to more generic matches otherwise. This is more easily explained in a graphic, but I don't have one yet. Just know that the system is versatile enough to support transitions even beyond simple edge overlays around squares - curves that take into account all eight neighbouring tiles are possible too.
