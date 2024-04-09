@@ -8,9 +8,9 @@ export default defineConfig({
         starlight({
             title: 'Selene Development',
             logo: {
-                src: './src/assets/selene.png',
+                src: './src/assets/selene.svg',
             },
-            favicon: '/favicon.png',
+            favicon: '/favicon.svg',
             social: {
                 github: 'https://github.com/SeleneRP/selene-docs',
                 discord: 'https://discord.gg/S7maQVRRa9',
