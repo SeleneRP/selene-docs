@@ -6,7 +6,7 @@ Tiles, including various ground types, vegetation, furniture and other generally
 
 Selene or Godot do not have the ability to pack these texture atlases directly, so you will need to use a third-party tool to combine your individual tile images into a single atlas texture.
 
-## Supported atlas formats:
+## Supported Atlas Formats
 
 -   [TexturePacker](https://www.codeandweb.com/texturepacker)'s `.tpsheet` (Grid / Strip)
 
