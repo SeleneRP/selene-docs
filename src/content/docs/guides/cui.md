@@ -16,8 +16,8 @@ This example would load `cat.png` directly from one of the legal search paths.
 
 Legal search paths include:
 
-- `<YourSeleneDirectory>/ui/**`
-- `<YourSeleneDirectory>/bundles/**`
+-   `<YourSeleneDirectory>/ui/**`
+-   `<YourSeleneDirectory>/bundles/**`
 
 ## Loading resources in CUI
 
@@ -29,32 +29,47 @@ This example would load `selene-logo.png` through Godot's resource loader.
 <img src="https://godot-resource/selene-logo.png" />
 ```
 
+## Interacting with CUI from Lua
+
+Your lua scripts can interact with the UI by firing custom events. 
+
+:::note
+The lua bindings to register fire custom events have not yet been implemented.
+:::
+
+In your UI's javascript, you can listen for these events using the `window` object. Note that this only supports `CustomEvent`s and you should therefore choose an event name that isn't already used by the browser. Your event data will be found within the `detail` property.
+
+```javascript
+window.addEventListener('helloEvent', (event) => {
+    console.log(event.detail);
+});
+```
+
 ## Interacting with Lua from CUI
 
 Your UI can interact with Lua by sending POST requests to the `godot-rpc` pseudo-protocol, similar to how you would interact with a backend.
 
 ```javascript
 fetch('https://godot-rpc/helloWorld', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    myMessage: 'Hello, world!'
-  })
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        myMessage: 'Hello, world!',
+    }),
 });
 ```
 
-However, the Lua bindings to register custom endpoints have not yet been implemented. Currently, the only functional endpoint is `/quit`, which will close the game.
+:::note
+The lua bindings to register custom procedures have not yet been implemented. Therefore, you are limited to the builtin procedures at the moment.
+:::
 
-## Interacting with CUI from Lua
+### Builtin Procedures
 
-Your lua scripts can interact with the UI by firing custom events. However, the lua bindings to fire these events have not yet been implemented.
+Selene comes with a few builtin procedures that you can use without having to implement them yourself.
 
-In your UI's javascript, you can listen for these events using the `window` object. Note that this only supports `CustomEvent`s and you should therefore choose an event name that isn't already used by the browser, and your event data will be found within the `detail` property.
-
-```javascript
-window.addEventListener('helloEvent', (event) => {
-  console.log(event.detail);
-});
-```
+| Procedure   | Description                        | Arguments | Example                                                                                                         |
+| ----------- | ---------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------- |
+| `/quit`     | Quits the game                     | None      | `fetch('https://godot-rpc/quit', { method: 'POST' });`                                                          |
+| `/open-url` | Opens a URL in the default browser | `url`     | `fetch('https://godot-rpc/open-url', { method: 'POST', body: JSON.stringify({ url: 'https://google.com' }) });` |
