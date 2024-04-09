@@ -101,3 +101,7 @@ Selene does not allow GDScript to be included in resource packs, as these cannot
     }
 }
 ```
+
+Selene offers the following components for scene tiles:
+
+- `OcclusionFade`: Fades the tile semi-transparent when it is occluding a character.
