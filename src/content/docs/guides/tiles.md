@@ -83,3 +83,21 @@ Once you've filled in the tileset and mask textures, press `Generate Textures`. 
 Note that transition tiles must be prefixed `t_`. This is so Selene can determine what kind of transitions are available and use them accordingly. If you generated your transition images using the above method, this should already be the case.
 
 Transitions will always try the best match and fall back to more generic matches otherwise. This is more easily explained in a graphic, but I don't have one yet. Just know that the system is versatile enough to support transitions even beyond simple edge overlays around squares - curves that take into account all eight neighbouring tiles are possible too.
+
+# Scene Tiles
+
+Some tiles are more complex than others, such as tiles holding particle effects or large tiles that should fade out or produce an outline when they cover player characters. For these cases, Godot supports Scene Collections within tilesets. Note that scenes placed in this way are still expected to be stateless - they may be reinitialized at any time.
+
+To make creation of these scene tiles easier, you can supply a `Scene Definitions` file to act as a hint for Selene. It will then automatically create scenes for the given tiles and include them in a Scene Collection.
+
+:::danger
+Selene does not allow GDScript to be included in resource packs, as these cannot be appropriately sandboxed. If you need to achieve functionality that requires scripting, Selene will provide a LuaScript component in the future.
+:::
+
+```json
+{
+    "apple_tree": {
+        "components": ["OcclusionFade"]
+    }
+}
+```
