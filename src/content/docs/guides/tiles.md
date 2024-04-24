@@ -14,8 +14,8 @@ Selene or Godot do not have the ability to pack these texture atlases directly, 
 TexturePacker's `Grid / Strip` algorithm is available in the paid version only. Note that other packing algorithms are not supported, as Godot expects a uniform grid for tilesets.
 :::
 
-:::note
-In the future, we will also support gdx-texturepacker's `.atlas` format as a free alternative.
+:::tip[Experimental]
+In the future, we will also support gdx-texturepacker's `.atlas` format as a free alternative, as well as the ability to pack texture atlases directly through our SDK.
 :::
 
 ## Creating a Tileset
@@ -91,7 +91,11 @@ Some tiles are more complex than others, such as tiles holding particle effects 
 To make creation of these scene tiles easier, you can supply a `Scene Definitions` file to act as a hint for Selene. It will then automatically create scenes for the given tiles and include them in a Scene Collection.
 
 :::danger
-Selene does not allow GDScript to be included in resource packs, as these cannot be appropriately sandboxed. If you need to achieve functionality that requires scripting, Selene will provide a LuaScript component in the future.
+Selene does not allow GDScript to be included in resource packs, as these cannot be appropriately sandboxed.
+:::
+
+:::tip[Experimental]
+If you need to achieve functionality that requires scripting, Selene will provide a LuaScript component in the future.
 :::
 
 ```json

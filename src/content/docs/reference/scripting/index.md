@@ -14,7 +14,9 @@ Read the [server configuration reference](../../configuration/server) for more i
 
 Selene provides custom script bindings that allow you to interact with the game world, players, react to inputs, and more.
 
-- [Resource Management](./resource-management/load_bundle)
+- [Resources](./resource-management/load_bundle)
+- [Maps](./map/load_map)
+- [Camera](./camera/set_camera_mode)
 
 ## Standard Lua Libraries
 

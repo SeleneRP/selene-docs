@@ -43,7 +43,7 @@ See examples below for how this library is used.
 
 Your lua scripts can interact with the UI by firing custom events.
 
-:::note
+:::tip[Experimental]
 The lua bindings to register fire custom events have not yet been implemented.
 :::
 
@@ -87,7 +87,7 @@ fetch('https://godot-rpc/helloWorld', {
 });
 ```
 
-:::note
+:::tip[Experimental]
 The lua bindings to register custom procedures have not yet been implemented. Therefore, you are limited to the builtin procedures at the moment.
 :::
 
