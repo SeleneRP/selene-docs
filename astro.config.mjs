@@ -26,6 +26,7 @@ export default defineConfig({
                 {
                     label: 'Reference',
                     items: [
+                        { label: 'Bundles', autogenerate: { directory: '/reference/bundles/' } },
                         { label: 'Scripting', 
 						items: [
 							{
@@ -33,9 +34,19 @@ export default defineConfig({
 								link: '/reference/scripting/',
 							},
 							{
-								label: 'Resource Management',
+								label: 'Resources',
 								collapsed: true,
 								autogenerate: { directory: '/reference/scripting/resource-management' }
+							},
+							{
+								label: 'Maps',
+								collapsed: true,
+								autogenerate: { directory: '/reference/scripting/map' }
+							},
+							{
+								label: 'Camera',
+								collapsed: true,
+								autogenerate: { directory: '/reference/scripting/camera' }
 							}
 						] },
                         { label: 'Configuration', autogenerate: { directory: '/reference/configuration/' } },
