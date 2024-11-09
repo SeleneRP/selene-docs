@@ -4,7 +4,7 @@ sidebar:
     label: Server Configuration
 ---
 
-Server configuration is done through the `server.lua` file. This is a special script that has access to some additional functions, such as `load_bundle` and `load_map`.
+Server configuration is done through the `server.lua` file. This is a special script that cannot access regular game functions, but instead has access to config-related functions such as `load_bundle` and `load_map`.
 
 Configuration options are defined as global variables from this script.
 
@@ -35,6 +35,12 @@ client_bundle_base_url = "http://localhost:8080"
 load_all_bundles()
 -- Alternatively, you can specify individual bundles to load like this:
 -- load_bundle("my_test_bundle")
+
+-- Load all scripts from the server_scripts folder.
+-- Scripts starting in . will be ignored.
+load_all_scripts()
+-- Alternatively, you can specify individual scripts to load like this:
+-- load_script("hello.world") -- takes a module path, i.e. loads server_scripts/hello/world.lua
 
 -- Load a specific map from a bundle.
 load_map("my_bundle", "my_test_map")

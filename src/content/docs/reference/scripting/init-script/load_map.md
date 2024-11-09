@@ -1,9 +1,9 @@
 ---
 title: load_map
-description: load_map is a globally available function that loads a map from a bundle.
+description: load_map is a server configuration function that loads a map from a bundle.
 ---
 
-`load_map` is a globally available function that loads a map from a bundle.
+`load_map` is a server configuration function that loads a map from a bundle. It is only available within `server.lua`.
 
 ```lua
 load_map(bundle_id: String, map_name: String)

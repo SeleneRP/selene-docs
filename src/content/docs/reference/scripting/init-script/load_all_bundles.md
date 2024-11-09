@@ -2,7 +2,7 @@
 title: load_all_bundles
 ---
 
-`load_all_bundles` is a globally available function that loads all resource bundles from the `bundles` folder.
+`load_all_bundles` is a server configuration function that loads all resource bundles from the `bundles` folder. It is only available within `server.lua`.
 
 ```lua
 load_all_bundles()

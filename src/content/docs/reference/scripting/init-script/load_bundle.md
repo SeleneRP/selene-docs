@@ -1,9 +1,9 @@
 ---
 title: load_bundle
-description: load_bundle is a globally available function that loads a resource bundle from the bundles folder.
+description: load_bundle is a server configuration function that loads a resource bundle from the bundles folder.
 ---
 
-`load_bundle` is a globally available function that loads a resource bundle from the `bundles` folder.
+`load_bundle` is a server configuration function that loads a resource bundle from the `bundles` folder. It is only available within `server.lua`.
 
 ```lua
 load_bundle(bundle_name: String)
