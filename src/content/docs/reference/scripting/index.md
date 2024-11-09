@@ -14,20 +14,10 @@ Read the [server configuration reference](../../configuration/server) for more i
 
 Selene provides custom script bindings that allow you to interact with the game world, players, react to inputs, and more.
 
-- [Resources](./resource-management/load_bundle)
-- [Maps](./map/load_map)
 - [Camera](./camera/set_camera_mode)
 
 ## Standard Lua Libraries
 
-Selene currently uses Lua 5.4 and exposes the following lua libraries:
+Selene uses [Luau](https://luau.org/getting-started) (a language derived from Lua 5.1) and exposes [all of its libraries](https://luau.org/library).
 
-- [base](https://www.lua.org/manual/5.4/manual.html#6.1)
-- [coroutine](https://www.lua.org/manual/5.4/manual.html#6.2)
-- [math](https://www.lua.org/manual/5.4/manual.html#6.6)
-- [string](https://www.lua.org/manual/5.4/manual.html#6.4)
-- [table](https://www.lua.org/manual/5.4/manual.html#6.5)
-- [utf8](https://www.lua.org/manual/5.4/manual.html#6.7)
-
-The libraries `io`, `os`, `debug`, and `package` are not available for security reasons.
-However, you will still be able to use the [`require`](https://www.lua.org/manual/5.4/manual.html#pdf-require) function to load and reference other lua files, and alternative functions are provided for some of the common tasks those libraries would normally be used for.
+Even though the `package` library is not available for security reasons, we do expose a custom `require` function that you can use to load modules from other scripts.

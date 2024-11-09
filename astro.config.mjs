@@ -35,18 +35,6 @@ export default defineConfig({
           label: 'Scripting Overview',
           link: '/reference/scripting/'
         }, {
-          label: 'Resources',
-          collapsed: true,
-          autogenerate: {
-            directory: '/reference/scripting/resource-management'
-          }
-        }, {
-          label: 'Maps',
-          collapsed: true,
-          autogenerate: {
-            directory: '/reference/scripting/map'
-          }
-        }, {
           label: 'Camera',
           collapsed: true,
           autogenerate: {
