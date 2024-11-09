@@ -21,3 +21,11 @@ Server entrypoints should always be placed inside a `server` subfolder to preven
 ## Content-only Bundles
 
 Bundles do not need a bundle manifest to be loaded. If your bundle only contains assets and resources, but no scripts, and does not need any advanced features, you can simply omit the `bundle.lua` file.
+
+## Server Scripts
+
+While bundles are capable of including server scripts through the `server` subfolder, Selene also offers the ability to place lua scripts directly inside the `server_scripts` folder. This is a good place for scripts that are very specific to your server and not necessarily meant to be reusable. This folder also takes precedence over bundles, meaning you can use it to override scripts in bundles. However, as the name implies, this folder can only be used for server-side scripts. 
+
+:::tip[Experimental]
+In the future, we may also offer support for `client_scripts` that are sent to the client and work in the same manner. For now, any client-side scripts must be part of a bundle.
+:::

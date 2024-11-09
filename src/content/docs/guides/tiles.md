@@ -1,5 +1,7 @@
 ---
 title: Tiles
+sidebar:
+  order: 10
 ---
 
 Tiles, including various ground types, vegetation, furniture and other generally immovable objects are defined as part of tilesets. Tilesets combine multiple tile images into a single atlas texture, which is a necessary optimization for rendering large maps with many tiles.

@@ -33,7 +33,7 @@ export default defineConfig({
         label: 'Scripting',
         items: [{
           label: 'Scripting Overview',
-          link: '/reference/scripting/'
+          slug: 'reference/scripting'
         }, {
           label: 'Camera',
           collapsed: true,

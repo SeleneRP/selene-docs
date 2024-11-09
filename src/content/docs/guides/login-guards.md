@@ -1,5 +1,7 @@
 ---
 title: Login Guards
+sidebar:
+  order: 40
 ---
 
 Bundles can register callbacks to run when new clients are attempting to join the server. Before a client is able to join, they must pass through all defined login guards.
