@@ -1,0 +1,168 @@
+{
+    "types": {
+        "Entities": {
+            "category": "Services",
+            "functions": {
+                "Create": {
+                    "args": [
+                        [
+                            {
+                                "name": "position",
+                                "type": "vector"
+                            }
+                        ]
+                    ],
+                    "returns": [
+                        {
+                            "name": "entity",
+                            "type": "Entity",
+                            "description": "The newly created entity."
+                        }
+                    ]
+                }
+            }
+        },
+        "Server": {
+            "category": "Services",
+            "events": {
+                "ServerStarted": {
+                    "args": []
+                }
+            }
+        },
+        "System": {
+            "category": "Services",
+            "functions": {
+                "CreateTimeout": {
+                    "args": [
+                        [
+                            {
+                                "name": "duration",
+                                "type": "number",
+                                "description": "The duration in seconds."
+                            },
+                            {
+                                "name": "callback",
+                                "type": "function",
+                                "description": "The callback to run after the duration has passed."
+                            }
+                        ]
+                    ],
+                    "returns": []
+                }
+            }
+        },
+        "Game": {
+            "description": "Accessible under the global variable `game`. Can be used to retrieve other game services.",
+            "functions": {
+                "GetService": {
+                    "args": [
+                        [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "description": "The name of the service to retrieve. See the services section for a list of available services."
+                            },
+                            {
+                                "name": "compatibility_date",
+                                "type": "string",
+                                "description": "The compatibility date to use for the service. Setting this (yyyy-mm-dd) allows your script to remain compatible even on breaking changes in the Lua API.",
+                                "default": "Latest"
+                            }
+                        ]
+                    ],
+                    "returns": [
+                        {
+                            "name": "service",
+                            "description": "The service"
+                        }
+                    ],
+                    "caveats": [
+                        {
+                            "type": "error",
+                            "note": "will error when trying to retrieve a service that does not exist."
+                        },
+                        {
+                            "type": "warning",
+                            "note": "will default back to 'Latest' and log an error if the version parameter is invalid."
+                        }
+                    ]
+                }
+            }
+        },
+        "Players": {
+            "functions": {
+                "AddCursorVisual": {
+                    "description": "",
+                    "args": [[]],
+                    "returns": []
+                },
+                "ClearCursor": {
+                    "description": "",
+                    "args": [[]],
+                    "returns": []
+                },
+                "SetControlledEntity": {
+                    "description": "",
+                    "args": [[]],
+                    "returns": []
+                },
+                "SetCameraMode": {
+                    "description": "",
+                    "args": [[]],
+                    "returns": []
+                },
+                "SetCameraTarget": {
+                    "description": "",
+                    "args": [[]],
+                    "returns": []
+                },
+                "SetCameraPosition": {
+                    "description": "",
+                    "args": [[]],
+                    "returns": []
+                }
+            },
+            "events": {
+                "PlayerConnected": {
+                    "args": [{ "name": "player", "type": "Player" }]
+                },
+                "PlayerAuthenticated": {
+                    "args": [{ "name": "player", "type": "Player" }]
+                },
+                "PlayerAuthenticationFailed": {
+                    "args": [{ "name": "player", "type": "Player" }]
+                },
+                "PlayerReadyToJoin": {
+                    "args": [{ "name": "player", "type": "Player" }]
+                },
+                "PlayerJoined": {
+                    "args": [{ "name": "player", "type": "Player" }]
+                },
+                "PlayerDisconnected": {
+                    "args": [{ "name": "player", "type": "Player" }]
+                }
+            }
+        }
+    },
+    "enums": {
+        "CameraMode": {
+            "description": "is an enum that describes the different available camera modes.",
+            "values": [
+                {
+                    "name": "Static",
+                    "description": "The camera is fixed in place."
+                },
+                {
+                    "name": "Following",
+                    "description": "The camera follows a target set via `SetCameraTarget`."
+                },
+                {
+                    "name": "FreeFlight",
+                    "description": "The camera can be freely moved around by the client."
+                }
+            ],
+            "references": ["camera/SetCameraMode", "camera/SetCameraTarget"]
+        }
+    }
+}
