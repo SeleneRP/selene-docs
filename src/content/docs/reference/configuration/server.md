@@ -2,6 +2,7 @@
 title: Server Configuration Reference
 sidebar:
     label: Server Configuration
+    order: 0
 ---
 
 Server configuration is done through the `server.lua` file. This is a special script that cannot access regular game functions, but instead has access to config-related functions such as `load_bundle` and `load_map`.

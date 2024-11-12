@@ -1,0 +1,91 @@
+---
+title: Player
+description: Class representing a connected player
+---
+
+Class representing a connected player
+
+
+
+
+
+
+
+
+
+## Methods
+
+{% methodsTable %}
+{% methodRow returns="EntityVisual" name="AddCursorVisual" parameters="identifier" /%}
+{% methodRow returns="void" name="ClearCursor" parameters="" /%}
+{% methodRow returns="void" name="SetControlledEntity" parameters="entity" /%}
+{% methodRow returns="void" name="SetCameraMode" parameters="mode" /%}
+{% methodRow returns="void" name="SetCameraTarget" parameters="target" /%}
+{% methodRow returns="void" name="SetCameraPosition" parameters="position" /%}
+{% /methodsTable %}
+
+
+
+
+
+
+
+## Method Descriptions
+
+{% methods %}
+{% hidden %}
+### AddCursorVisual
+{% /hidden %}
+
+{% method name="AddCursorVisual" returns="EntityVisual" parameters="identifier" %}
+
+Attaches a visual to the player's cursor.
+
+{% /method %}
+{% hidden %}
+### ClearCursor
+{% /hidden %}
+
+{% method name="ClearCursor" returns="void" parameters="" %}
+
+Removes all visuals from the player's cursor.
+
+{% /method %}
+{% hidden %}
+### SetControlledEntity
+{% /hidden %}
+
+{% method name="SetControlledEntity" returns="void" parameters="entity" %}
+
+Sets the entity that the player controls.
+
+{% /method %}
+{% hidden %}
+### SetCameraMode
+{% /hidden %}
+
+{% method name="SetCameraMode" returns="void" parameters="mode" %}
+
+Sets the camera mode for the player.
+
+{% /method %}
+{% hidden %}
+### SetCameraTarget
+{% /hidden %}
+
+{% method name="SetCameraTarget" returns="void" parameters="target" %}
+
+Sets the target that the camera should follow when in Following mode.
+
+{% /method %}
+{% hidden %}
+### SetCameraPosition
+{% /hidden %}
+
+{% method name="SetCameraPosition" returns="void" parameters="position" %}
+
+Sets the camera position (when not in Following mode).
+
+{% /method %}
+{% /methods %}
+

@@ -1,0 +1,93 @@
+---
+title: Players
+description: Service for managing player connections
+---
+
+Service for managing player connections
+
+
+
+
+
+
+
+
+
+
+
+---
+    
+## Events
+
+{% events %}
+{% hidden %}
+### PlayerConnected
+{% /hidden %}
+
+{% event name="PlayerConnected" parameters=[{name: "player", type: "Player"}] %}
+Fired when a player establishes a connection to the server, before they authenticate or join the game.
+{% /event %}
+{% hidden %}
+### PlayerAuthenticated
+{% /hidden %}
+
+{% event name="PlayerAuthenticated" parameters=[{name: "player", type: "Player"}] %}
+Fired when a player has been successfully authenticated.
+{% /event %}
+{% hidden %}
+### PlayerAuthenticationFailed
+{% /hidden %}
+
+{% event name="PlayerAuthenticationFailed" parameters=[{name: "player", type: "Player"}] %}
+Fired when a player's authentication attempt fails.
+{% /event %}
+{% hidden %}
+### PlayerReadyToJoin
+{% /hidden %}
+
+{% event name="PlayerReadyToJoin" parameters=[{name: "player", type: "Player"}] %}
+Fired when a player has loaded necessary assets and is ready to join the game.
+{% /event %}
+{% hidden %}
+### PlayerJoined
+{% /hidden %}
+
+{% event name="PlayerJoined" parameters=[{name: "player", type: "Player"}] %}
+Fired when a player has fully joined the game.
+{% /event %}
+{% hidden %}
+### PlayerDisconnected
+{% /hidden %}
+
+{% event name="PlayerDisconnected" parameters=[{name: "player", type: "Player"}] %}
+Fired when a player disconnects from the server.
+{% /event %}
+{% /events %}
+
+---
+    
+## Enumerations
+
+{% enums %}
+{% hidden %}
+### CameraMode
+{% /hidden %}
+
+    {% enum name="CameraMode" %}
+
+    {% enumValue type="CameraMode" name="Static" %}
+The camera is fixed in place.
+{% /enumValue %}
+{% enumValue type="CameraMode" name="Following" %}
+The camera follows a target set via `SetCameraTarget`.
+{% /enumValue %}
+{% enumValue type="CameraMode" name="FreeFlight" %}
+The camera can be freely moved around by the client.
+{% /enumValue %}
+    {% /enum %}
+{% /enums %}
+
+
+
+
+

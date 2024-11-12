@@ -1,86 +1,59 @@
 {
     "types": {
         "Entities": {
+            "summary": "Service for creating and managing entities in the game",
+            "description": "test",
+            "guides": {
+                "Tutori": "uwu"
+            },
             "category": "Services",
             "functions": {
                 "Create": {
                     "description": "Creates a new entity at the specified position.",
-                    "args": [
-                        [
-                            {
-                                "name": "position",
-                                "type": "vector"
-                            }
-                        ]
-                    ],
-                    "returns": [
-                        {
-                            "name": "entity",
-                            "type": "Entity",
-                            "description": "The newly created entity."
-                        }
-                    ]
+                    "args": [[{ "name": "position", "type": "vector" }]],
+                    "returns": ["Entity"]
                 }
             }
         },
         "Server": {
+            "summary": "Service for managing server-related functionality",
+            "description": "",
             "category": "Services",
             "events": {
                 "ServerStarted": {
-                    "description": "Fired when the server has finished initializing and is ready to accept players.",
-                    "args": []
+                    "description": "Fired when the server has finished initializing and is ready to accept players."
                 }
             }
         },
         "System": {
+            "summary": "Service providing core system functionality",
+            "description": "",
             "category": "Services",
             "functions": {
                 "CreateTimeout": {
                     "description": "Creates a timeout that executes a callback function after a specified duration.",
                     "args": [
                         [
-                            {
-                                "name": "duration",
-                                "type": "number",
-                                "description": "The duration in seconds."
-                            },
-                            {
-                                "name": "callback",
-                                "type": "function",
-                                "description": "The callback to run after the duration has passed."
-                            }
+                            { "name": "duration", "type": "number" },
+                            { "name": "callback", "type": "function" }
                         ]
-                    ],
-                    "returns": []
+                    ]
                 }
             }
         },
         "Game": {
+            "summary": "Main game service accessor",
             "description": "Accessible under the global variable `game`. Can be used to retrieve other game services.",
             "functions": {
                 "GetService": {
                     "description": "Retrieves a game service by name with optional version compatibility.",
                     "args": [
                         [
-                            {
-                                "name": "name",
-                                "type": "string",
-                                "description": "The name of the service to retrieve. See the services section for a list of available services."
-                            },
-                            {
-                                "name": "compatibility_date",
-                                "type": "string",
-                                "description": "The compatibility date to use for the service. Setting this (yyyy-mm-dd) allows your script to remain compatible even on breaking changes in the Lua API.",
-                                "default": "Latest"
-                            }
+                            { "name": "name", "type": "string" },
+                            { "name": "compatibility_date", "type": "string", "default": "Latest" }
                         ]
                     ],
-                    "returns": [
-                        {
-                            "name": "service",
-                            "description": "The service"
-                        }
-                    ],
+                    "returns": ["Service"],
                     "caveats": [
                         {
                             "type": "error",
@@ -95,42 +68,23 @@
             }
         },
         "Entity": {
+            "summary": "Base class for game entities",
+            "description": "",
             "functions": {
                 "AddVisual": {
                     "description": "Adds a visual to the entity.",
-                    "args": [
-                        [
-                            {
-                                "name": "identifier",
-                                "type": "string",
-                                "description": "The identifier of the visual to create."
-                            }
-                        ]
-                    ],
-                    "returns": [
-                        {
-                            "name": "visual",
-                            "type": "EntityVisual",
-                            "description": "The newly created visual."
-                        }
-                    ]
+                    "args": [[{ "name": "identifier", "type": "string" }]],
+                    "returns": ["EntityVisual"]
                 },
                 "Spawn": {
                     "description": "Spawns the entity on the given map.",
-                    "args": [
-                        [
-                            {
-                                "name": "map",
-                                "type": "string",
-                                "description": "The map to spawn the entity on."
-                            }
-                        ]
-                    ],
-                    "returns": []
+                    "args": [[{ "name": "map", "type": "string" }]]
                 }
             }
         },
         "EntityVisual": {
+            "summary": "Visual representation component for entities",
+            "description": "",
             "properties": {
                 "tint": {
                     "type": "vector",
@@ -139,96 +93,60 @@
             },
             "functions": {
                 "Remove": {
-                    "description": "Removes the visual from the entity.",
-                    "args": [[]],
-                    "returns": []
+                    "description": "Removes the visual from the entity."
                 }
             }
         },
         "Player": {
+            "summary": "Class representing a connected player",
+            "description": "",
             "functions": {
                 "AddCursorVisual": {
                     "description": "Attaches a visual to the player's cursor.",
-                    "args": [
-                        [
-                            {
-                                "name": "identifier",
-                                "type": "string",
-                                "description": "The identifier of the visual to create."
-                            }
-                        ]
-                    ],
-                    "returns": [
-                        {
-                            "name": "visual",
-                            "type": "EntityVisual",
-                            "description": "The newly created visual."
-                        }
-                    ]
+                    "args": [[{ "name": "identifier", "type": "string" }]],
+                    "returns": ["EntityVisual"]
                 },
                 "ClearCursor": {
-                    "description": "Removes all visuals from the player's cursor.",
-                    "args": [[]],
-                    "returns": []
+                    "description": "Removes all visuals from the player's cursor."
                 },
                 "SetControlledEntity": {
                     "description": "Sets the entity that the player controls.",
-                    "args": [
-                        [
-                            {
-                                "name": "entity",
-                                "type": "Entity",
-                                "description": "The entity to control."
-                            }
-                        ]
-                    ],
-                    "returns": []
+                    "args": [[{ "name": "entity", "type": "Entity" }]]
                 },
                 "SetCameraMode": {
                     "description": "Sets the camera mode for the player.",
-                    "args": [
-                        [
-                            {
-                                "name": "mode",
-                                "type": "CameraMode",
-                                "description": "The camera mode to use."
-                            }
-                        ]
-                    ],
-                    "returns": [],
-                    "references": ["CameraMode"]
+                    "args": [[{ "name": "mode", "type": "Players/CameraMode" }]]
                 },
                 "SetCameraTarget": {
                     "description": "Sets the target that the camera should follow when in Following mode.",
-                    "args": [
-                        [
-                            {
-                                "name": "target",
-                                "type": "Entity",
-                                "description": "The entity for the camera to follow."
-                            }
-                        ]
-                    ],
-                    "returns": [],
-                    "references": ["Player/SetCameraMode", "CameraMode"]
+                    "args": [[{ "name": "target", "type": "Entity" }]]
                 },
                 "SetCameraPosition": {
                     "description": "Sets the camera position (when not in Following mode).",
-                    "args": [
-                        [
-                            {
-                                "name": "position",
-                                "type": "vector",
-                                "description": "The position to move the camera to."
-                            }
-                        ]
-                    ],
-                    "returns": [],
-                    "references": ["Player/SetCameraMode", "CameraMode"]
+                    "args": [[{ "name": "position", "type": "vector" }]]
                 }
             }
         },
         "Players": {
+            "summary": "Service for managing player connections",
+            "description": "",
+            "enums": {
+                "CameraMode": {
+                    "summary": "Enum that describes the different available camera modes.",
+                    "description": "",
+                    "values": {
+                        "Static": {
+                            "description": "The camera is fixed in place."
+                        },
+                        "Following": {
+                            "description": "The camera follows a target set via `SetCameraTarget`."
+                        },
+                        "FreeFlight": {
+                            "description": "The camera can be freely moved around by the client."
+                        }
+                    }
+                }
+            },
             "events": {
                 "PlayerConnected": {
                     "description": "Fired when a player establishes a connection to the server, before they authenticate or join the game.",
@@ -255,22 +173,6 @@
                     "args": [{ "name": "player", "type": "Player" }]
                 }
             }
-        },
-        "CameraMode": {
-            "category": "Enums",
-            "description": "Enum that describes the different available camera modes.",
-            "properties": {
-                "Static": {
-                    "description": "The camera is fixed in place."
-                },
-                "Following": {
-                    "description": "The camera follows a target set via `SetCameraTarget`."
-                },
-                "FreeFlight": {
-                    "description": "The camera can be freely moved around by the client."
-                }
-            },
-            "references": ["Player/SetCameraMode", "Player/SetCameraTarget", "Player/SetCameraPosition"]
         }
     }
 }

@@ -1,0 +1,18 @@
+---
+interface Props {
+  type: string;
+  name: string;
+}
+
+const {type, name} = Astro.props;
+---
+
+<h3 id={name.toLowerCase()}><a href={`/reference/scripting/classes/${type.toLowerCase()}`}>{type}</a> {name}</h3>
+<slot></slot>
+<hr />
+
+<style>
+  h3 {
+    font-family: monospace;
+  }
+</style>

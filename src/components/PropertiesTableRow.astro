@@ -1,0 +1,21 @@
+---
+interface Props {
+  type: string;
+  name: string;
+  default?: string;
+}
+
+const { type, name, default: defaultValue } = Astro.props;
+---
+
+<tr>
+  <td><a href={`/reference/scripting/classes/${type.toLowerCase()}`}>{type}</a></td>
+  <td style="width: 100%"><a href={`#${name.toLowerCase()}`}>{name}</a></td>
+  <td>{defaultValue && <code>{defaultValue}</code>}</td>
+</tr>
+
+<style>
+  td {
+    font-family: monospace;
+  }
+</style>

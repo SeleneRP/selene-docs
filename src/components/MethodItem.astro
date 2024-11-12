@@ -1,0 +1,21 @@
+---
+interface Props {
+  name: string;
+  parameters?: string;
+  returns: string;
+}
+
+const {name, parameters, returns} = Astro.props;
+---
+
+<h3 id={name.toLowerCase()}>
+  {returns === "void" ? <abbr title="No return value.">void</abbr> : <a href={`/reference/scripting/classes/${returns.toLowerCase()}`}>{returns}</a>}
+  {name}()</h3>
+<slot></slot>
+<hr />
+
+<style>
+  h3 {
+    font-family: monospace;
+  }
+</style>

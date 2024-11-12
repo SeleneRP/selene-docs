@@ -1,0 +1,20 @@
+---
+interface Props {
+  returns?: string;
+  name: string;
+  args?: string;
+}
+
+const { returns = "void", name, args: args } = Astro.props;
+---
+
+<tr>
+  <td>{returns === "void" ? <abbr title="No return value.">void</abbr> : <a href={`/reference/scripting/classes/${returns.toLowerCase()}`}>{returns}</a>}</td>
+  <td style="width: 100%"><a href={`#${name.toLowerCase()}`}>{name}()</a></td>
+</tr>
+
+<style>
+  td {
+    font-family: monospace;
+  }
+</style>

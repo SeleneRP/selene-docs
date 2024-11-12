@@ -1,0 +1,17 @@
+---
+interface Props {
+  name: string;
+}
+
+const {name} = Astro.props;
+---
+
+<h3 id={name.toLowerCase()}>enum {name}:</h3>
+<slot></slot>
+<hr />
+
+<style>
+  h3 {
+    font-family: monospace;
+  }
+</style>

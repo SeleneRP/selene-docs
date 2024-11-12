@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+import markdoc from '@astrojs/markdoc';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://selene.twelveiterations.com',
@@ -31,16 +33,15 @@ export default defineConfig({
         }
       }, {
         label: 'Scripting',
-        items: [{
-          label: 'Scripting Overview',
-          slug: 'reference/scripting'
-        }, {
-          label: 'Camera',
-          collapsed: true,
-          autogenerate: {
-            directory: '/reference/scripting/camera'
+        items: [
+          'reference/scripting',
+          {
+            label: 'Class Reference',
+            autogenerate: {
+              directory: '/reference/scripting/classes/'
+            }
           }
-        }]
+        ]
       }, {
         label: 'Configuration',
         autogenerate: {
@@ -52,5 +53,5 @@ export default defineConfig({
       baseUrl: 'https://github.com/SeleneRP/selene-docs/edit/main/'
     },
     lastUpdated: true
-  })]
+  }), markdoc()]
 });

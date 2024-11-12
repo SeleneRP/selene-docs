@@ -1,88 +1,92 @@
-const fs = require('fs').promises;
-const path = require('path');
+import { promises as fs } from 'fs';
+import path from 'path';
 
 async function generateDocs() {
     const luaJson = JSON.parse(await fs.readFile('lua.json', 'utf8'));
     const types = luaJson.types;
-    const docsPath = path.join('src', 'content', 'docs', 'reference', 'scripting');
+    const docsPath = path.join('src', 'content', 'docs', 'reference', 'scripting', 'classes');
 
     // Ensure directory exists
     await fs.mkdir(docsPath, { recursive: true });
 
     for (const [typeName, typeData] of Object.entries(types)) {
-        const typeDir = path.join(docsPath, typeName.toLowerCase());
-        await fs.mkdir(typeDir, { recursive: true });
-
-        // Generate type documentation
-        const typeContent = generateTypeDoc(typeName, typeData);
-        await fs.writeFile(path.join(typeDir, 'index.md'), typeContent);
-
-        // Generate function documentation
-        if (typeData.functions) {
-            for (const [funcName, funcData] of Object.entries(typeData.functions)) {
-                const funcContent = generateFunctionDoc(typeName, funcName, funcData);
-                await fs.writeFile(path.join(typeDir, `${funcName.toLowerCase()}.md`), funcContent);
-            }
-        }
-
-        // Generate property documentation
-        if (typeData.properties) {
-            for (const [propName, propData] of Object.entries(typeData.properties)) {
-                const propContent = generatePropertyDoc(typeName, propName, propData);
-                await fs.writeFile(path.join(typeDir, `${propName.toLowerCase()}.md`), propContent);
-            }
-        }
+        const content = generateTypeDoc(typeName, typeData);
+        await fs.writeFile(path.join(docsPath, `${typeName}.mdoc`), content);
     }
 }
 
 function generateTypeDoc(typeName, typeData) {
     return `---
 title: ${typeName}
-description: ${typeData.description || `Documentation for the ${typeName} type`}
+description: ${typeData.summary || `Documentation for the ${typeName} type`}
 ---
 
-${typeData.description || ''}
+${typeData.summary ? `${typeData.summary}\n\n` : ''}
 
-${typeData.functions ? '## Functions\n\n' + Object.keys(typeData.functions).map(f => `- [${f}](./${f.toLowerCase()})`).join('\n') : ''}
+${typeData.description ? `## Description\n\n${typeData.description}\n\n` : ''}
 
-${typeData.properties ? '## Properties\n\n' + Object.keys(typeData.properties).map(p => `- [${p}](./${p.toLowerCase()})`).join('\n') : ''}
-`;
-}
+${typeData.guides ? `## Guides\n\n${Object.entries(typeData.guides).map(([title, link]) => `- [${title}](${link})`).join('\n')}\n\n` : ''}
 
-function generateFunctionDoc(typeName, funcName, funcData) {
-    const args = funcData.args?.[0]?.map(arg => 
-        `- \`${arg.name}\`: ${arg.type}${arg.description ? ` - ${arg.description}` : ''}`
-    ).join('\n') || '';
+${typeData.properties ? `## Properties
 
-    const returns = funcData.returns?.map(ret =>
-        `- ${ret.type || 'void'}${ret.description ? ` - ${ret.description}` : ''}`
-    ).join('\n') || '';
+{% propertiesTable %}
+${Object.entries(typeData.properties).map(([propName, propData]) => 
+    `{% propertyRow type="${propData.type.toLowerCase()}" name="${propName}" /%}`
+).join('\n')}
+{% /propertiesTable %}` : ''}
 
-    return `---
-title: ${funcName}
-description: ${funcData.description || `Documentation for ${typeName}.${funcName}`}
----
+${typeData.functions ? `## Methods
 
-\`${typeName}.${funcName}(${funcData.args?.[0]?.map(a => a.name).join(', ') || ''})\`
+{% methodsTable %}
+${Object.entries(typeData.functions).map(([funcName, funcData]) => 
+    `{% methodRow returns="${funcData.returns || 'void'}" name="${funcName}" parameters="${funcData.args?.[0]?.map((a) => a.name).join(', ') || ''}" /%}`
+).join('\n')}
+{% /methodsTable %}` : ''}
 
-${funcData.description || ''}
+${typeData.events ? `---
+    
+## Events
 
-${args ? '## Parameters\n\n' + args : ''}
+{% events %}
+${Object.entries(typeData.events).map(([eventName, eventData]) => 
+    `{% hidden %}\n### ${eventName}\n{% /hidden %}\n
+{% event name="${eventName}" parameters=[${eventData.args?.map(a => (`{name: "${a.name}", type: "${a.type}"}`)).join(', ') || ''}] %}\n${eventData.description}\n{% /event %}`
+).join('\n')}
+{% /events %}` : ''}
 
-${returns ? '## Returns\n\n' + returns : ''}
-`;
-}
+${typeData.enums ? `---
+    
+## Enumerations
 
-function generatePropertyDoc(typeName, propName, propData) {
-    return `---
-title: ${propName}
-description: ${propData.description || `Documentation for ${typeName}.${propName} property`}
----
+{% enums %}
+${Object.entries(typeData.enums).map(([enumName, enumData]) => 
+    `{% hidden %}\n### ${enumName}\n{% /hidden %}\n
+    {% enum name="${enumName}" %}\n
+    ${Object.entries(enumData.values).map(([name, data]) => `{% enumValue type="${enumName}" name="${name}" %}\n${data.description}\n{% /enumValue %}`).join('\n')}
+    {% /enum %}`
+).join('\n')}
+{% /enums %}` : ''}
 
-Type: \`${propData.type}\`
+${typeData.properties ? `## Property Descriptions
 
-${propData.description || ''}
-`;
-}
+{% properties %}
+${Object.entries(typeData.properties).map(([propName, propData]) => 
+    `{% hidden %}\n### ${propName}\n{% /hidden %}\n
+{% property name="${propName}" type="${propData.type}" %}\n
+${propData.description || ''}\n
+{% /property %}`).join('\n')}
+{% /properties %}` : ''}
+
+${typeData.functions ? `## Method Descriptions
+
+{% methods %}
+${Object.entries(typeData.functions).map(([funcName, funcData]) => 
+    `{% hidden %}\n### ${funcName}\n{% /hidden %}\n
+{% method name="${funcName}" returns="${funcData.returns || 'void'}" parameters="${funcData.args?.[0]?.map((a) => a.name).join(', ') || ''}" %}\n
+${funcData.description || ''}\n
+{% /method %}`).join('\n')}
+{% /methods %}` : ''}
+
+`}
 
 generateDocs().catch(console.error);
