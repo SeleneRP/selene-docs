@@ -1,12 +1,8 @@
 {
     "types": {
         "Entities": {
-            "summary": "Service for creating and managing entities in the game",
-            "description": "test",
-            "guides": {
-                "Tutori": "uwu"
-            },
-            "category": "Services",
+            "summary": "Service for creating and managing entities in the game.",
+            "description": "Obtain this service using `game:GetService(\"Entities\")`.",
             "functions": {
                 "Create": {
                     "description": "Creates a new entity at the specified position.",
@@ -16,9 +12,8 @@
             }
         },
         "Server": {
-            "summary": "Service for managing server-related functionality",
-            "description": "",
-            "category": "Services",
+            "summary": "Service for managing server-related functionality.",
+            "description": "Obtain this service using `game:GetService(\"Server\")`.",
             "events": {
                 "ServerStarted": {
                     "description": "Fired when the server has finished initializing and is ready to accept players."
@@ -26,9 +21,8 @@
             }
         },
         "System": {
-            "summary": "Service providing core system functionality",
-            "description": "",
-            "category": "Services",
+            "summary": "Service providing core system functionality.",
+            "description": "Obtain this service using `game:GetService(\"System\")`.",
             "functions": {
                 "CreateTimeout": {
                     "description": "Creates a timeout that executes a callback function after a specified duration.",
@@ -42,7 +36,7 @@
             }
         },
         "Game": {
-            "summary": "Main game service accessor",
+            "summary": "Entrypoint to the API.",
             "description": "Accessible under the global variable `game`. Can be used to retrieve other game services.",
             "functions": {
                 "GetService": {
@@ -68,8 +62,7 @@
             }
         },
         "Entity": {
-            "summary": "Base class for game entities",
-            "description": "",
+            "summary": "Class representing player characters, NPCs and other game objects.",
             "functions": {
                 "AddVisual": {
                     "description": "Adds a visual to the entity.",
@@ -83,8 +76,7 @@
             }
         },
         "EntityVisual": {
-            "summary": "Visual representation component for entities",
-            "description": "",
+            "summary": "Visual representation in the game world, used in entities and cursors.",
             "properties": {
                 "tint": {
                     "type": "vector",
@@ -93,13 +85,12 @@
             },
             "functions": {
                 "Remove": {
-                    "description": "Removes the visual from the entity."
+                    "description": "Removes the visual from the entity or cursor it's attached to."
                 }
             }
         },
         "Player": {
-            "summary": "Class representing a connected player",
-            "description": "",
+            "summary": "Class representing a connecting or connected player.",
             "functions": {
                 "AddCursorVisual": {
                     "description": "Attaches a visual to the player's cursor.",
@@ -128,8 +119,8 @@
             }
         },
         "Players": {
-            "summary": "Service for managing player connections",
-            "description": "",
+            "summary": "Service for handling player connections.",
+            "description": "Obtain this service using `game:GetService(\"Players\")`.",
             "enums": {
                 "CameraMode": {
                     "summary": "Enum that describes the different available camera modes.",
